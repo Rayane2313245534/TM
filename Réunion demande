@@ -1,0 +1,28 @@
+import requests
+
+
+user_input = str(input("Number of the block please? "))
+
+response = requests.get("https://api.blockcypher.com/v1/btc/main/blocks/"+user_input)
+   
+print(response)
+
+if response.status_code != 200:
+  print("error")
+else:
+  print("Cryptocurrency: ",response.json()['chain'])
+  print("Hash: ",response.json()['hash'])
+  print("Total: ", response.json()['total'])
+  print("Time: ", response.json()['time'])
+  print("Nonce ", response.json()['nonce'])
+  print("Size: ", response.json()['size'])
+  print("Version: ", response.json()['ver']) 
+  print("Relayed by: ", response.json()['relayed_by'])
+  print("Bits: ", response.json()['bits'])
+  print("Number of transaction: ", response.json()['n_tx'])
+  print("Previous block: ", response.json()['prev_block'])
+  print("Merkle roots: ", response.json()['mrkl_root'])
+  print("Transaction ID: ", response.json()['txids'])
+  print("Depth: ", response.json()['depth'])
+  print("Previous Block URL: ", response.json()['prev_block_url'])
+  print("Transaction URL: ", response.json()['tx_url'])
